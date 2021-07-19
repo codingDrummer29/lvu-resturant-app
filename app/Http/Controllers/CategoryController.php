@@ -14,7 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return "index";
+        // return "index";
+        $categories = Category::latest()->get();
+        return view('category.index', compact('categories'));
     }
 
     /**
@@ -35,7 +37,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        return "ok";
+        // return "ok";
+        // dd($request->all());
+        // creating new data in the Db through model
+        Category::create([
+            'name' => $request->get('name'),
+        ]);
+        // redirecting the user back with a message
+        return redirect()->back()->with('message', 'Category Created');
     }
 
     /**

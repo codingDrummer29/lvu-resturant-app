@@ -4,6 +4,13 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+
+            @if ( Session::has('message') )
+                <div class="alert alert-success">
+                    {{ Session::get('message') }}
+                </div>
+            @endif
+
             <form action="{{ route('category.store') }}" method="post">@csrf
             <div class="card">
                 <div class="card-header">Manage Food Categories</div>
