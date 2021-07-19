@@ -4,8 +4,15 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+
+            @if ( Session::has('message') )
+                <div class="alert alert-success">
+                    {{ Session::get('message') }}
+                </div>
+            @endif
+
             <div class="card">
-                <div class="card-header">All Categories</div>
+                <div class="card-header">Manage All Food Categories</div>
 
                 <div class="card-body">
                     {{-- TODO: table to show data properly - DONE: --}}

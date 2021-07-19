@@ -44,7 +44,7 @@ class CategoryController extends Controller
             'name' => $request->get('name'),
         ]);
         // redirecting the user back with a message
-        return redirect()->back()->with('message', 'Category Created');
+        return redirect()->back()->with('message', 'Category Created Successfully');
     }
 
     /**
@@ -66,7 +66,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        // searching the hold id from the form in the DB
+        $category = Category::find($id);
+        // returning the data to edit.blade form
+        return view('category.edit', compact('category'));
     }
 
     /**
@@ -78,7 +81,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //find the category from DB with hold id to update
+        $category = Category::find($id);
+        // update the table-field in DB with form submitted data
+        $category->name = $request->get('name');
+        // save the data in the DB table
+        $category->save();
+        // redirect the user back
+        return redirect()->route('category.index')->with('message', 'Category Updated Successfully');
     }
 
     /**

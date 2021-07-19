@@ -13,7 +13,7 @@
 
             <form action="{{ route('category.store') }}" method="post">@csrf
             <div class="card">
-                <div class="card-header">Manage Food Categories</div>
+                <div class="card-header">Add Food Categories</div>
 
                 <div class="card-body">
                     <div class="form-group">
