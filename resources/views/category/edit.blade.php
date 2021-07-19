@@ -19,9 +19,14 @@
                             <input 
                                 type="text" 
                                 name="name" 
-                                class="form-control" 
+                                class="form-control @error('name') is-invalid @enderror" 
                                 value="{{ $category->name }}"
                             >
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
                         <div class="form-group text-center">

@@ -39,6 +39,11 @@ class CategoryController extends Controller
     {
         // return "ok";
         // dd($request->all());
+        // validate the form, avoid blank data
+        $this->validate($request, [
+            'name' => 'required',
+            // 'name' => 'required|min:2',
+        ]);
         // creating new data in the Db through model
         Category::create([
             'name' => $request->get('name'),
@@ -81,6 +86,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // validate the form, avoid blank data
+        $this->validate($request, [
+            'name' => 'required',
+            // 'name' => 'required|min:2',
+        ]);
         //find the category from DB with hold id to update
         $category = Category::find($id);
         // update the table-field in DB with form submitted data
@@ -99,6 +109,11 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //find the category from DB with hold id to update
+        $category = Category::find($id);
+        // delete
+        $category->delete();
+        // redirect the user back
+        return redirect()->route('category.index')->with('message', 'Category Deleted Successfully'); 
     }
 }
