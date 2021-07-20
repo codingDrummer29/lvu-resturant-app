@@ -13,7 +13,11 @@
 
             <div class="card">
                 <div class="card-header">Add Food Items</div>
-                <form action="{{ route('food.store') }}" method="post">@csrf
+                <form 
+                    action="{{ route('food.store') }}" 
+                    method="post"
+                    enctype="multipart/form-data"
+                >@csrf
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name">Name</label>
@@ -56,7 +60,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="name">Caregory</label>
+                            <label for="name">Category</label>
                             <select 
                                 name="category" 
                                 class="form-control @error('category') is-invalid @enderror"

@@ -14,7 +14,7 @@ class FoodController extends Controller
      */
     public function index()
     {
-        //
+        return "index";
     }
 
     /**
@@ -45,6 +45,23 @@ class FoodController extends Controller
             'category' => 'required',
             'image' => 'required|mimes:png,jpeg,jpg',
         ]);
+        
+        // storing the image in public folder
+        $image = $request->file('image'); // get the image from form
+        $name = time().'.'.$image->getClientOriginalExtension(); // new name of file with timestamp
+        $destinationPath = public_path('/images'); // securing the destination of the file
+        $image->move($destinationPath, $name); // moves the image file to destination with new name
+
+        // soting data in DB
+        Food::create([
+            'name' => $request->get('name'),
+            'description' => $request->get('description'),
+            'price' => $request->get('price'),
+            'category_id' => $request->get('category'),
+            'image' => $name,
+        ]);
+        // success message with redirect
+        return redirect()->back()->with('message', 'Food item CREATED!!');
     }
 
     /**
