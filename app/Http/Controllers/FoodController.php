@@ -86,7 +86,10 @@ class FoodController extends Controller
      */
     public function edit($id)
     {
-        //
+        //finding the item from the DB
+        $food = Food::find($id);
+        // loading the data inside the edit form view
+        return view('food.edit', compact('food'));
     }
 
     /**
