@@ -27,11 +27,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // category routes starts
 
 // Route::get('/category/create', 'CategoryController@create');
-Route::resource('category', 'CategoryController');
+// Route::resource('category', 'CategoryController');
+Route::resource('category', 'CategoryController')->middleware('auth');
 
 // category routes ends
+
 // food routes starts
 
-Route::resource('food', 'FoodController');
+// Route::resource('food', 'FoodController');
+Route::resource('food', 'FoodController')->middleware('auth');
 
 // food routes ends
