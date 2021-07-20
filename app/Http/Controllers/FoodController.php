@@ -101,7 +101,49 @@ class FoodController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // validate the form
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'required|min:2|max:60',
+            'price' => 'required|integer',
+            'category' => 'required',
+            'image' => 'mimes:png,jpeg,jpg',
+        ]);
+        
+        // find the item from DB
+        $food = Food::find($id);
+        
+        // checking if image needs update
+        // grab image from DB
+        $image_name = $food->image;
+        // check-upload form-updated-image
+        if ($request->hasFile('image')) {
+            // storing the image in public folder
+            $image = $request->file('image'); // get the image from form
+            $image_name = time().'.'.$image->getClientOriginalExtension(); // new name of file with timestamp
+            $destinationPath = public_path('/images'); // securing the destination of the file
+            $image->move($destinationPath, $image_name); // moves the image file to destination with new name
+        }
+
+        // update data
+        $food->update([
+            'name' => $request->get('name'),
+            'description' => $request->get('description'),
+            'price' => $request->get('price'),
+            'category_id' => $request->get('category'),
+            'image' => $image_name,
+        ]);
+
+        /* $food->name = $request->get('name');
+           $food->description = $request->get('description');
+           $food->price = $request->get('price');
+           $food->category_id = $request->get('category');
+           $food->image = $db_image;
+           $food->save();
+        */
+
+        // success message with redirect
+        return redirect()->route('food.index')->with('message', 'Food item UPDATED!!');
     }
 
     /**
