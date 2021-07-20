@@ -12,31 +12,31 @@
             @endif
 
             <form action="{{ route('category.store') }}" method="post">@csrf
-            <div class="card">
-                <div class="card-header">Add Food Categories</div>
+                <div class="card">
+                    <div class="card-header">Add Food Categories</div>
 
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input 
-                            type="text" 
-                            name="name" 
-                            class="form-control @error('name') is-invalid @enderror" 
-                        >
-                        @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input 
+                                type="text" 
+                                name="name" 
+                                class="form-control @error('name') is-invalid @enderror" 
+                            >
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
 
-                    <div class="form-group text-center">
-                        <button class="btn btn-outline-primary btn-block">
-                            Submit
-                        </button>
+                        <div class="form-group text-center">
+                            <button class="btn btn-outline-primary btn-block">
+                                Create Food Category
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
             </form>
         </div>
     </div>

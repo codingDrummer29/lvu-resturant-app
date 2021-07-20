@@ -24,7 +24,8 @@ class FoodController extends Controller
      */
     public function create()
     {
-        //
+        // return "ok";
+        return view('food.create');
     }
 
     /**
@@ -35,7 +36,15 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return "ok";
+        // validate the form
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'required|min:2|max:60',
+            'price' => 'required|integer',
+            'category' => 'required',
+            'image' => 'required|mimes:png,jpeg,jpg',
+        ]);
     }
 
     /**
