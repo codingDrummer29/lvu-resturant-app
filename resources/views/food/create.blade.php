@@ -38,8 +38,7 @@
                                 type="text" 
                                 name="description" 
                                 class="form-control @error('description') is-invalid @enderror" 
-                            >
-                            </textarea>
+                            ></textarea>
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

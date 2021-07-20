@@ -43,7 +43,7 @@ class FoodController extends Controller
         // validate the form
         $this->validate($request, [
             'name' => 'required',
-            'description' => 'required|min:2|max:60',
+            'description' => 'required|min:2|max:200',
             'price' => 'required|integer',
             'category' => 'required',
             'image' => 'required|mimes:png,jpeg,jpg',

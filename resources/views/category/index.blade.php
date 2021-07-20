@@ -12,7 +12,16 @@
             @endif
 
             <div class="card">
-                <div class="card-header">Manage All Food Categories</div>
+                <div class="card-header">
+                    Manage All Food Categories
+                    <span class="float-right">
+                        <a href="{{ route('category.create') }}">
+                            <button class="btn btn-outline-secondary">
+                                Add Category
+                            </button>
+                        </a>
+                    </span>
+                </div>
 
                 <div class="card-body">
                     {{-- TODO: table to show data properly - DONE: --}}
