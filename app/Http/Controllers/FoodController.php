@@ -154,6 +154,11 @@ class FoodController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // find & hold the item from DB
+        $food = Food::find($id);
+        // delete
+        $food->delete();
+        // success message with redirect
+        return redirect()->route('food.index')->with('message', 'Food item DELETED!!');
     }
 }
