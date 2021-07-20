@@ -18,7 +18,7 @@
                     <table class="table">
                         <thead class="thead-dark">
                           <tr>
-                            <th scope="col">S. No.</th>
+                            {{-- <th scope="col">S. No.</th> --}}
                             <th scope="col">Image</th>
                             <th scope="col">Name</th>
                             <th scope="col">Description</th>
@@ -32,7 +32,7 @@
                             @if ( count( $foods ) > 0 )   
                                 @foreach ($foods as $key=>$food)
                                 <tr>
-                                    <th scope="row">{{ $key+1 }}</th>
+                                    {{-- <th scope="row">{{ $key+1 }}</th> --}}
                                     <td>
                                         <img 
                                             src="{{ asset('images') }}/{{ $food->image }}" 
@@ -43,8 +43,8 @@
                                     </td>
                                     <td>{{ $food->name }}</td>
                                     <td>{{ $food->description }}</td>
-                                    <td>{{ $food->price }}</td>
-                                    <td>{{ $food->category_id }}</td>
+                                    <td>Rs. {{ $food->price }}/-</td>
+                                    <td>{{ $food->category->name }}</td>
                                     <td>
                                         <a 
                                             href="{{ route('food.edit',[$food->id]) }}"
@@ -120,6 +120,10 @@
                             @endif
                         </tbody>
                     </table>
+                    {{-- FIXME: align to center --}}
+                    <div class="text-center">
+                        {{ $foods->links() }}
+                    </div>
                 </div>
             </div>
         </div>

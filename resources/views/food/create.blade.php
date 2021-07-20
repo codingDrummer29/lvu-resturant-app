@@ -65,10 +65,10 @@
                                 name="category" 
                                 class="form-control @error('category') is-invalid @enderror"
                             >
-                                @foreach (App\Models\Category::all() as $category)
-                                    <option disabled selected value="" >-- select category --</option>
-                                    <option value="{{ $category->id }}" >{{ $category->name }}</option>
-                                @endforeach
+                                <option disabled selected value="" >-- select category --</option>
+                            @foreach (App\Models\Category::all() as $category)
+                                <option value="{{ $category->id }}" >{{ $category->name }}</option>
+                            @endforeach
                             </select>
                             @error('category')
                                 <span class="invalid-feedback" role="alert">
