@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Auth::routes();
 Auth::routes(['register' => false]);
@@ -38,3 +38,8 @@ Route::resource('category', 'CategoryController')->middleware('auth');
 Route::resource('food', 'FoodController')->middleware('auth');
 
 // food routes ends
+
+// landing page
+Route::get('/', 'FoodController@listFood');
+// food-item view page
+Route::get('/foods/{id}', 'FoodController@view')->name('food.view');

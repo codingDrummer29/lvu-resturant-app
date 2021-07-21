@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Food;
+
 class Category extends Model
 {
     use HasFactory;
@@ -12,4 +14,10 @@ class Category extends Model
     protected $fillable = [
         'name',
     ];
+
+    // defining Category-Food relationship one-to-many
+    public function food()
+    {
+        return $this->hasMany(Food::class, 'category_id', 'id');
+    }
 }
